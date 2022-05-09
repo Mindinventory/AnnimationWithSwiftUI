@@ -12,7 +12,9 @@
 <p></p> 
 
 ## Preview
-![Card flip](https://user-images.githubusercontent.com/42262083/167075628-bdf42456-4088-45f3-83a7-81f8ce59dba0.gif)
+<p align="center">
+  <img width="320" height="667" src="https://user-images.githubusercontent.com/42262083/167075628-bdf42456-4088-45f3-83a7-81f8ce59dba0.gif">
+</p>
 
 ## Requirements
 - iOS 13.0+
@@ -36,8 +38,9 @@ withAnimation(Animation.linear(duration: 0.5)) {
 # Tinder card animation
 
 ## Preview
-![Tinder Card Animation](https://user-images.githubusercontent.com/42262083/167405994-17d24c9f-93c4-42fa-aec1-c4f7eb4dedc9.gif)
-
+<p align="center">
+  <img width="320" height="667" src="https://user-images.githubusercontent.com/42262083/167405994-17d24c9f-93c4-42fa-aec1-c4f7eb4dedc9.gif">
+</p>
 
 ## Requirements
 - iOS 15.0+
