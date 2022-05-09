@@ -18,6 +18,15 @@
 - iOS 13.0+
 - Xcode 12.5+
 
+## Config
+```swift
+var results = [UserModel(name: "Pish Patel",   color1: "Color-9", color2: "Color-10"),
+               UserModel(name: "Anita Bath",   color1: "Color-1", color2: "Color-2"),
+               UserModel(name: "Bea Mine",     color1: "Color-1", color2: "Color-2")]
+
+CardFlipAnimation(arrModel: results)
+```
+
 ## Usage
 ```swift
 withAnimation(Animation.linear(duration: 0.5)) {
@@ -33,6 +42,12 @@ withAnimation(Animation.linear(duration: 0.5)) {
 ## Requirements
 - iOS 15.0+
 - Xcode 13.0+
+
+## Config
+```swift
+let userProfiles: UserProfiles = Bundle.main.decode("userProfiles.json")
+TinderAnimation(userProfiles: userProfiles)
+```
 
 ## Usage
 ```swift
