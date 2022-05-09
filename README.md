@@ -1,5 +1,5 @@
-# AnnimationWithSwiftUI
-# CardFlipSwiftUI
+# Annimation With SwiftUI
+## CardFlipSwiftUI
 <a href="https://docs.swift.org/swift-book/" style="pointer-events: stroke;" target="_blank">
 <img src="https://img.shields.io/badge/swift-5.0-brightgreen">
 </a>
@@ -20,6 +20,15 @@ Card Flip animation in SwiftUI
 ## Requirements
 - iOS 13.0+
 - Xcode 12.5+
+
+## Config
+```swift
+var results = [UserModel(name: "Pish Patel",   color1: "Color-9", color2: "Color-10"),
+               UserModel(name: "Anita Bath",   color1: "Color-1", color2: "Color-2"),
+               UserModel(name: "Bea Mine",     color1: "Color-1", color2: "Color-2")]
+
+CardFlipAnimation(arrModel: results)
+```
 
 ## Usage
 ```swift
