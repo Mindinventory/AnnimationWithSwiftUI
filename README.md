@@ -1,4 +1,4 @@
-# Card Flip 
+# AnnimationWith SwiftUI
 <a href="https://docs.swift.org/swift-book/" style="pointer-events: stroke;" target="_blank">
 <img src="https://img.shields.io/badge/swift-5.0-brightgreen">
 </a>
@@ -11,16 +11,16 @@
 </a>
 <p></p> 
 
-## Preview
+Have you thought of doing animation using UIKit then probably it will demand for the complex logic and code set up but SwiftUI make it trouble - free. SwiftUI handled all the complexity and create a animation view.
+
+#### Let’s see some of the serviceable and applicable animation soultion which can be used during application developement
+### FlipAnimation : [CardFlipAnimation](https://github.com/Mindinventory/AnnimationWithSwiftUI/blob/main/AnnimationWithSwiftUI/CardFlipAnimation.swift)
+
 <p align="center">
   <img width="320" height="667" src="https://user-images.githubusercontent.com/42262083/167075628-bdf42456-4088-45f3-83a7-81f8ce59dba0.gif">
 </p>
 
-## Requirements
-- iOS 13.0+
-- Xcode 12.5+
-
-## Config
+#### Animation used
 ```swift
 var results = [UserModel(name: "Pish Patel",   color1: "Color-9", color2: "Color-10"),
                UserModel(name: "Anita Bath",   color1: "Color-1", color2: "Color-2"),
@@ -29,36 +29,37 @@ var results = [UserModel(name: "Pish Patel",   color1: "Color-9", color2: "Color
 CardFlipAnimation(arrModel: results)
 ```
 
-## Usage
 ```swift
 withAnimation(Animation.linear(duration: 0.5)) {
 }
 ```
+## Requirements
+- iOS 13.0+
+- Xcode 12.5+
 
-# Tinder card animation
+### TinderSwipe : [TinderAnimation](https://github.com/Mindinventory/AnnimationWithSwiftUI/blob/main/AnnimationWithSwiftUI/TinderAnimation.swift)
 
-## Preview
 <p align="center">
   <img width="320" height="667" src="https://user-images.githubusercontent.com/42262083/167405994-17d24c9f-93c4-42fa-aec1-c4f7eb4dedc9.gif">
 </p>
 
-## Requirements
-- iOS 15.0+
-- Xcode 13.0+
 
-## Config
+## Usage
 ```swift
 let userProfiles: UserProfiles = Bundle.main.decode("userProfiles.json")
 TinderAnimation(userProfiles: userProfiles)
 ```
 
-## Usage
 ```swift
 .gesture(gesture: Gesture)
 .scaleEffect(CGFloat)
 .rotationEffect(angle: Angle)
 .animation(animation: Animation)
 ```
+
+## Requirements
+- iOS 15.0+
+- Xcode 13.0+
 
 ## 📱 Check out other lists of our Mobile UI libraries
 
