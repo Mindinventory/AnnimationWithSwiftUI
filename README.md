@@ -1,4 +1,4 @@
-# Annimation With SwiftUI
+# SwiftUI - Annimation
 <a href="https://docs.swift.org/swift-book/" style="pointer-events: stroke;" target="_blank">
 <img src="https://img.shields.io/badge/swift-5.0-brightgreen">
 </a>
