@@ -21,7 +21,7 @@ Have you thought of doing animation using UIKit then probably it will demand for
 
 ### FlipAnimation : [CardFlipAnimation](https://github.com/Mindinventory/AnnimationWithSwiftUI/blob/main/AnnimationWithSwiftUI/CardFlipAnimation.swift)
 
-#### Darg and drop the CardFlipAnimation file and use it like below
+Darg and drop the CardFlipAnimation file and use it like below
 ```swift
 var results = [UserModel(name: "Pish Patel",   color1: "Color-9", color2: "Color-10"),
                UserModel(name: "Anita Bath",   color1: "Color-1", color2: "Color-2"),
@@ -40,7 +40,8 @@ withAnimation(Animation.linear(duration: 0.5)) {
 
 ### TinderSwipe : [TinderAnimation](https://github.com/Mindinventory/AnnimationWithSwiftUI/blob/main/AnnimationWithSwiftUI/TinderAnimation.swift)
 
-## Usage
+Use the file TinderAnimation and use it like
+
 ```swift
 let userProfiles: UserProfiles = Bundle.main.decode("userProfiles.json")
 TinderAnimation(userProfiles: userProfiles)
