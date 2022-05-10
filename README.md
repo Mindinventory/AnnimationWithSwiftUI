@@ -14,13 +14,14 @@
 Have you thought of doing animation using UIKit then probably it will demand for the complex logic and code set up but SwiftUI make it trouble - free. SwiftUI handled all the complexity and create a animation view.
 
 #### Let’s see some of the serviceable and applicable animation soultion which can be used during application developement
-### FlipAnimation : [CardFlipAnimation](https://github.com/Mindinventory/AnnimationWithSwiftUI/blob/main/AnnimationWithSwiftUI/CardFlipAnimation.swift)
 
 <p align="center">
-  <img width="320" height="667" src="https://user-images.githubusercontent.com/42262083/167075628-bdf42456-4088-45f3-83a7-81f8ce59dba0.gif">
+  <img src="https://user-images.githubusercontent.com/42262083/167559075-b0d64cca-4d03-474d-bda3-ba8b27071a97.gif">
 </p>
 
-#### Animation used
+### FlipAnimation : [CardFlipAnimation](https://github.com/Mindinventory/AnnimationWithSwiftUI/blob/main/AnnimationWithSwiftUI/CardFlipAnimation.swift)
+
+#### Usage
 ```swift
 var results = [UserModel(name: "Pish Patel",   color1: "Color-9", color2: "Color-10"),
                UserModel(name: "Anita Bath",   color1: "Color-1", color2: "Color-2"),
@@ -38,11 +39,6 @@ withAnimation(Animation.linear(duration: 0.5)) {
 - Xcode 12.5+
 
 ### TinderSwipe : [TinderAnimation](https://github.com/Mindinventory/AnnimationWithSwiftUI/blob/main/AnnimationWithSwiftUI/TinderAnimation.swift)
-
-<p align="center">
-  <img width="320" height="667" src="https://user-images.githubusercontent.com/42262083/167405994-17d24c9f-93c4-42fa-aec1-c4f7eb4dedc9.gif">
-</p>
-
 
 ## Usage
 ```swift
