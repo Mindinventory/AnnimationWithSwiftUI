@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "bxl_instagram-alt.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

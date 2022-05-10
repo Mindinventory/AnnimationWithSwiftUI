@@ -26,11 +26,11 @@ struct AnnimationWithSwiftUIApp: App {
     var body: some Scene {
         WindowGroup {
             /* Card flip animation  */
-            CardFlipAnimation(arrModel: results)
+//            CardFlipAnimation(arrModel: results)
             
             /* tinder card animation */
-//            let userProfiles: UserProfiles = Bundle.main.decode("userProfiles.json")
-//            TinderAnimation(userProfiles: userProfiles)
+            let userProfiles: UserProfiles = Bundle.main.decode("userProfiles.json")
+            TinderAnimation(userProfiles: userProfiles)
         }
     }
 }
