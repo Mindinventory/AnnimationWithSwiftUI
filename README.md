@@ -14,11 +14,13 @@ Have you thought of doing animation using UIKit then probably it will demand for
 
 #### Let’s see some of the serviceable and applicable animation solution which can be used during application development
 
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/42262083/167559075-b0d64cca-4d03-474d-bda3-ba8b27071a97.gif">
-</p>
+
 
 ### FlipAnimation : [CardFlipAnimation](https://github.com/Mindinventory/AnnimationWithSwiftUI/blob/main/AnnimationWithSwiftUI/CardFlipAnimation.swift)
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/42262083/167624918-ed5356b0-5982-434b-b1d1-5e153df42bc1.gif">
+</p>
 
 Drag and drop the CardFlipAnimation file and use it like below
 ```swift
@@ -38,6 +40,10 @@ withAnimation(Animation.linear(duration: 0.5)) {
 - Xcode 12.5+
 
 ### TinderSwipe : [TinderAnimation](https://github.com/Mindinventory/AnnimationWithSwiftUI/blob/main/AnnimationWithSwiftUI/TinderAnimation.swift)
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/42262083/167624925-7f233636-cc97-4a56-a258-e8586dba7c6b.gif">
+</p>
 
 Use the file TinderAnimation and use it like
 
