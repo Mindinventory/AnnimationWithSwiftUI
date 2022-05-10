@@ -214,12 +214,14 @@ struct HeaderView: View {
                     .frame(width: 40, height: 40, alignment: .center)
                     .padding()
             }
+            .buttonStyle(StaticButtonStyle())
             .tint(.primary)
             Spacer()
         }
         .padding(.trailing, 110)
     }
 }
+
 struct FooterView: View {
     
     //MARK: - Body
@@ -233,6 +235,7 @@ struct FooterView: View {
                     .font(.system(size: 42, weight: .light))
                     .padding()
             } //: Button
+            .buttonStyle(StaticButtonStyle())
             .foregroundColor(.black)
             Spacer()
             Text("Swipe") //: Text
@@ -253,6 +256,7 @@ struct FooterView: View {
                     .font(.system(size: 42, weight: .light))
                     .padding()
             } //: Button
+            .buttonStyle(StaticButtonStyle())
         } //: HStack
     }
 }
@@ -309,4 +313,11 @@ extension Bundle {
     // 5. Return the ready-to-use data
     return loaded
   }
+}
+
+
+struct StaticButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+    }
 }
