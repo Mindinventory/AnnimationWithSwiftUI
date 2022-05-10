@@ -8,9 +8,11 @@
 </a>
 <p></p> 
 
+Animations are a way of fascinate the users of your application. Thorugh the annimations user can come accorss the smooth and friendly experience of the application 
+
 Have you thought of doing animation using UIKit then probably it will demand for the complex logic and code set up but SwiftUI make it trouble - free. SwiftUI handled all the complexity and create a animation view.
 
-#### Let’s see some of the serviceable and applicable animation soultion which can be used during application developement
+#### Let’s see some of the serviceable and applicable animation solution which can be used during application development
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/42262083/167559075-b0d64cca-4d03-474d-bda3-ba8b27071a97.gif">
