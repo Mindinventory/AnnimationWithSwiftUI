@@ -15,6 +15,8 @@ struct TinderAnimation: View {
     var dragAreaThreshold: CGFloat = 65.0
     @State var lastCardIndex = 1
     @State var cardRemovaltransition = AnyTransition.trailingBottom
+    @State var isLiked: Bool = false
+    @State var isDisliked: Bool = false
     
     //MARK: - Drag States
     
@@ -55,10 +57,9 @@ struct TinderAnimation: View {
     
     //MARK: - Body -
     var body: some View {
-        VStack{
+        return VStack{
             //MARK: Header
             HeaderView()
-                .opacity(dragState.isDragging ? 0.0 : 1.0)
                 .animation(.default, value: dragState.isDragging)
             
             //MARK: CardView
@@ -72,14 +73,16 @@ struct TinderAnimation: View {
                                     // X-MARK SYMBOL
                                     Image(systemName: "x.circle")
                                         .modifier(SymbolModifier())
-                                        .opacity(self.dragState.translation.width < -self.dragAreaThreshold && self.isTopCard(cardView: card) ? 1.0 : 0.0)
+                                        .opacity(self.dragState.translation.width < -self.dragAreaThreshold && self.isTopCard(cardView: card) ? 1.0 : (isDisliked && self.isTopCard(cardView: card)) ? 1.0 : 0.0)
                                     
                                     // HEART SYMBOL
                                     Image(systemName: "heart.circle")
                                         .modifier(SymbolModifier())
-                                        .opacity(self.dragState.translation.width > self.dragAreaThreshold && self.isTopCard(cardView: card) ? 1.0 : 0.0)
+                                        .opacity(self.dragState.translation.width > self.dragAreaThreshold && self.isTopCard(cardView: card) ? 1.0 : (isLiked && self.isTopCard(cardView: card)) ? 1.0 : 0.0)
+
                                 }
                             })
+                        // Gesture Animation
                             .offset(x: self.isTopCard(cardView: card) ?  self.dragState.translation.width : 0, y: self.isTopCard(cardView: card) ? self.dragState.translation.height : 0)
                             .scaleEffect(self.dragState.isDragging && self.isTopCard(cardView: card) ? 0.85 : 1)
                             .rotationEffect(Angle(degrees:self.isTopCard(cardView: card) ?  Double(self.dragState.translation.width / 12) : 0))
@@ -96,27 +99,56 @@ struct TinderAnimation: View {
                                     break
                                 }
                             })
-                                        .onChanged({ value in
-                                guard case .second(true, let drag?) = value else {return}
-                                if drag.translation.width < -self.dragAreaThreshold {
-                                    self.cardRemovaltransition = .leadingBottom
-                                }
-                                
-                                if drag.translation.width > self.dragAreaThreshold {
-                                    self.cardRemovaltransition = .trailingBottom
-                                }
-                                
-                            })
+//                                        .onChanged({ value in
+//                                guard case .second(true, let drag?) = value else {return}
+//                                if drag.translation.width < -self.dragAreaThreshold {
+//                                    self.cardRemovaltransition = .leadingBottom
+//                                }
+//
+//                                if drag.translation.width > self.dragAreaThreshold {
+//                                    self.cardRemovaltransition = .trailingBottom
+//                                }
+//
+//                            })
                                         .onEnded({ value in
                                 guard case .second(true, let drag?) = value else {
                                     return
                                 }
                                 if drag.translation.width < -self.dragAreaThreshold || drag.translation.width > self.dragAreaThreshold {
-                                    self.moveCards()
+                                    withAnimation(.easeOut) {
+                                        self.moveCards()
+                                    }
                                 }
                             })
-                            ).transition(cardRemovaltransition)
-                        
+                            )
+                            .scaleEffect((self.isTopCard(cardView: card) && (isLiked || isDisliked)) ? 0.9 : 1)
+                            .transition(.offset(x: (self.isTopCard(cardView: card) && isLiked) ?  400 : (self.isTopCard(cardView: card) && isDisliked) ?  -400 : 0, y: (self.isTopCard(cardView: card) && (isLiked || isDisliked)) ?  400 : 0))
+                            .onChange(of: isLiked) { liked in
+                                cardRemovaltransition = .trailingBottom
+                                if self.isTopCard(cardView: card) {
+                                    if liked {
+                                        isLiked.toggle()
+                                        print(cardRemovaltransition)
+                                        self.moveCards()
+                                    }
+                                }
+                            }
+                            .onChange(of: isDisliked) { disliked in
+                                cardRemovaltransition = .leadingBottom
+                                if self.isTopCard(cardView: card) {
+                                    if disliked {
+                                        isDisliked.toggle()
+                                        print(cardRemovaltransition)
+                                        self.moveCards()
+                                    }
+                                }
+                            }
+                            .animation(.easeInOut(duration: 0.5),value: (isLiked || isDisliked))
+                            .scaleEffect((self.isTopCard(cardView: card) && (isLiked || isDisliked)) ? 0.6 : 1)
+                            .rotationEffect(Angle(degrees:(self.isTopCard(cardView: card) && isLiked) ?  65 : (self.isTopCard(cardView: card) && isDisliked) ? -65 : 0))
+                            .animation(.easeOut(duration: 0.8)
+                                        .delay(0.5),
+                                       value: (isLiked || isDisliked))
                     }
                 }
             }
@@ -124,7 +156,7 @@ struct TinderAnimation: View {
             Spacer()
             
             //MARK: Footer
-            FooterView()
+            FooterView(isLiked: $isLiked, isDisLiked: $isDisliked)
         }
         .padding(.bottom, 20)
         .edgesIgnoringSafeArea(.bottom)
@@ -138,7 +170,7 @@ struct TinderAnimation: View {
         
         self.lastCardIndex += 1
         if let profileCard = userProfiles.results?[lastCardIndex % (userProfiles.results?.count ?? 0)] {
-            let newCarView = CardView(user: profileCard)
+            let newCarView = CardView(user: profileCard,isLiked: Binding.constant(false))
             cardViews.append(newCarView)
         }
     }
@@ -147,7 +179,7 @@ struct TinderAnimation: View {
         var views = [CardView]()
         if let userprofiles = userProfiles.results {
             for index in 0..<2 {
-                views.append(CardView(user: userprofiles[index]))
+                views.append(CardView(user: userprofiles[index],isLiked: Binding.constant(false)))
             }
         }
         return views
@@ -163,6 +195,7 @@ struct CardView: View, Identifiable {
     var id = UUID()
     var user: Results
     var style: UIBlurEffect.Style = .systemUltraThinMaterial
+    @Binding var isLiked: Bool
     var body: some View {
         ZStack{
             ForEach(user.photos ?? []) { userProfile in
@@ -224,11 +257,14 @@ struct HeaderView: View {
 
 struct FooterView: View {
     
+    @Binding var isLiked: Bool
+    @Binding var isDisLiked: Bool
+    
     //MARK: - Body
     var body: some View {
         HStack{
             Button {
-                print("Dislike Button")
+                isDisLiked.toggle()
             } label: {
                 Image(systemName: "xmark.circle")
                     .renderingMode(.template)
@@ -248,7 +284,7 @@ struct FooterView: View {
                 )
             Spacer()
             Button {
-                print("Like Button")
+                isLiked.toggle()
             } label: {
                 Image(systemName: "heart.circle")
                     .renderingMode(.template)
@@ -290,6 +326,7 @@ extension AnyTransition {
         AnyTransition.asymmetric(insertion: .identity, removal: AnyTransition.move(edge: .leading).combined(with: .move(edge: .bottom)))
     }
 }
+
 extension Bundle {
   func decode<T: Codable>(_ file: String) -> T {
     // 1. Locate the json file
